@@ -25,12 +25,14 @@ function App() {
       .catch(error => console.log("Error while fetching data:", error))
   }, [])
 
-  console.log("toylist in App.jsx:", toyList)
+  function addToy(newToy) {
+    setToyList(prevList => [...prevList, newToy])
+  }
 
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm addToy={addToy} /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
